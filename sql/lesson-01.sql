@@ -2,5 +2,4 @@
 
 -- PostgreSQL Architecture
 
-
 -- We will write SQL here from next lesson.
