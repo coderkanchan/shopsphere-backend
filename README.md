@@ -4,6 +4,7 @@ Learning PostgreSQL + Prisma ORM from scratch.
 
 This repository contains:
 
+
 - PostgreSQL practice
 - Prisma ORM
 - SQL queries
