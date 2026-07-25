@@ -6,7 +6,6 @@ async function main() {
 
   console.log(users);
 }
-
 main()
   .catch(console.error)
   .finally(async () => {
