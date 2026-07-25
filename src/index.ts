@@ -1,7 +1,13 @@
 import prisma from "./config/prisma";
 
 async function main() {
-  console.log("Prisma Connected");
+  const users = await prisma.user.findMany();
+
+  console.log(users);
 }
 
-main();
+main()
+  .catch(console.error)
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
