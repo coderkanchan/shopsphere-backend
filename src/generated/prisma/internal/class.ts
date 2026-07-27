@@ -56,8 +56,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  name      String\n  email     String   @unique\n  age       Int?\n  createdAt DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "4bce51dd11c8fc8a150796cd998b00c8a9fb44e5addacbe655c01ec157965113",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  name      String\n  email     String   @unique\n  age       Int?\n  createdAt DateTime @default(now())\n}\n",
+  "inlineSchemaHash": "0012a1b0cf73e5ce15a3783583cfce3141f9005c8b265dbe75ccd96818c0349d",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
