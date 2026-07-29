@@ -3,12 +3,11 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: {
-      email: "abc@gmail.com"
+      name: "Kanchan"
     }
   });
-
   console.log(user);
 }
 
