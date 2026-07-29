@@ -3,12 +3,15 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const user = await prisma.user.findFirst({
+  const users = await prisma.user.findMany({
     where: {
-      name: "Kanchan"
-    }
+      age: {
+        gt: 18,
+      },
+    },
   });
-  console.log(user);
+
+  console.log(users);
 }
 
 main()
