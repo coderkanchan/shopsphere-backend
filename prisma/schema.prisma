@@ -18,5 +18,7 @@ model User {
   email     String   @unique
   age       Int?
   createdAt DateTime @default(now())
+  
+  posts     Post[]
 }
 
