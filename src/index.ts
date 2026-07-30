@@ -7,7 +7,6 @@ async function main() {
       email: "kanchan@gmail.com"
     },
     select: {
-      id: true,
       name: true
     }
   });
