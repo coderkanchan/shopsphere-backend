@@ -2,15 +2,17 @@ import "dotenv/config";
 import prisma from "./config/prisma";
 
 async function main() {
-  const users = await prisma.user.findMany({
+  const user = await prisma.user.findUnique({
     where: {
-      name: {
-        startsWith: "A"
-      }
+      email: "kanchan@gmail.com"
+    },
+    select: {
+      id: true,
+      name: true
     }
   });
-  console.log(users);
 
+  console.log(user);
 }
 
 main()
