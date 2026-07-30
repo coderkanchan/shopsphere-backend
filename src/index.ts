@@ -11,6 +11,21 @@ async function main() {
     }
   });
 
+  console.log(users); const users = await prisma.user.findMany({
+    where: {
+      age: {
+        gte: 18
+      }
+    }
+  });
+
+  console.log(users); const users = await prisma.user.findMany({
+    where: {
+      age: {
+        gte: 18
+      }
+    }
+  });
   console.log(users);
 
 }
