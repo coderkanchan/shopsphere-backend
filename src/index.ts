@@ -4,10 +4,10 @@ import prisma from "./config/prisma";
 async function main() {
   const user = await prisma.user.findUnique({
     where: {
-      email: "kanchan@gmail.com"
+      id: 1
     },
-    select: {
-      name: true
+    include: {
+      orders: true
     }
   });
 

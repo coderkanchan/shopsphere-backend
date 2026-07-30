@@ -19,3 +19,4 @@ model User {
   age       Int?
   createdAt DateTime @default(now())
 }
+
