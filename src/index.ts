@@ -4,26 +4,22 @@ import prisma from "./config/prisma";
 async function main() {
   const user = await prisma.user.create({
     data: {
-      name: "Rahul",
-      email: "rahul@gmail.com",
-      age: 25,
+      name: "Aman",
+      email: "aman@gmail.com",
 
       posts: {
         create: [
           {
-            title: "My First Post",
-            content: "Learning Prisma is awesome!",
+            title: "Post 1",
           },
           {
-            title: "Second Post",
-            content: "Nested create is powerful.",
+            title: "Post 2",
+          },
+          {
+            title: "Post 3",
           },
         ],
       },
-    },
-
-    include: {
-      posts: true,
     },
   });
 
