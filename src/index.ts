@@ -5,7 +5,6 @@ async function main() {
   const post = await prisma.post.create({
     data: {
       title: "Prisma Rocks",
-
       user: {
         connect: {
           id: 999,
