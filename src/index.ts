@@ -13,7 +13,6 @@ async function main() {
       },
     },
   });
-  
   console.log(post);
 }
 
