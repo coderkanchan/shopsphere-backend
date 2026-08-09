@@ -2,18 +2,22 @@ import "dotenv/config";
 import prisma from "./config/prisma";
 
 async function main() {
-  const post = await prisma.post.create({
-    data: {
-      title: "Prisma Rocks",
-      
-      user: {
-        connect: {
-          id: 999,
-        },
-      },
+  const user = await prisma.user.upsert({
+    where: {
+      email: "priya@gmail.com",
+    },
+
+    update: {
+      age: 23,
+    },
+
+    create: {
+      name: "Priya",
+      email: "priya@gmail.com",
+      age: 23,
     },
   });
-  console.log(post);
+  console.log(user);
 }
 
 main()
