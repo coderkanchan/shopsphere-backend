@@ -19,7 +19,6 @@ async function main() {
   });
   console.log(user);
 }
-
 main()
   .catch(console.error)
   .finally(async () => {
