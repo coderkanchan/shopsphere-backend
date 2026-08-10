@@ -17,6 +17,7 @@ async function main() {
       age: 23,
     },
   });
+  
   console.log(user);
 }
 main()
