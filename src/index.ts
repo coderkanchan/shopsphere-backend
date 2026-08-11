@@ -23,6 +23,14 @@ async function main() {
       },
     },
   });
+
+  const user = await prisma.user.findFirst({
+    where: {
+      age: {
+        gte: 18,
+      },
+    },
+  });
 }
 
 main()
