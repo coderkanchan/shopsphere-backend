@@ -24,7 +24,15 @@ async function main() {
     },
   });
 
-  const user = await prisma.user.findFirst({
+  const users = await prisma.user.findFirst({
+    where: {
+      age: {
+        gte: 18,
+      },
+    },
+  });
+
+  const user = await prisma.user.findMany({
     where: {
       age: {
         gte: 18,
