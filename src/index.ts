@@ -16,7 +16,13 @@ async function main() {
 
   console.log(result);
 
-
+  await prisma.user.deleteMany({
+    where: {
+      age: {
+        lt: 18,
+      },
+    },
+  });
 }
 
 main()
