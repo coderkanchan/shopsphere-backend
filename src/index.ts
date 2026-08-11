@@ -2,7 +2,7 @@ import "dotenv/config";
 import prisma from "./config/prisma";
 
 async function main() {
-  const user = await prisma.user.createMany({
+  const result = await prisma.user.createMany({
     data: [
       {
         name: "Aarav",
@@ -22,8 +22,9 @@ async function main() {
     ],
   });
 
-  console.log(user);
+  console.log(result);
 }
+
 main()
   .catch(console.error)
   .finally(async () => {
