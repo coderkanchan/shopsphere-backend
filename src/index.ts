@@ -39,12 +39,6 @@ async function main() {
       },
     },
   });
-
-  await prisma.user.findUnique({
-    where: {
-      email: "ananya@gmail.com",
-    },
-  });
 }
 
 main()
