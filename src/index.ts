@@ -3,42 +3,22 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const result = await prisma.user.updateMany({
+  const user = await prisma.user.findUnique({
     where: {
-      age: {
-        gte: 25,
-      },
+      id: 2,
     },
-    data: {
-      age: 30,
-    },
-  });
-
-  console.log(result);
-
-  await prisma.user.deleteMany({
-    where: {
-      age: {
-        lt: 18,
+    select: {
+      name: true,
+      posts: {
+        select: {
+          title: true,
+        },
       },
     },
   });
 
-  const users = await prisma.user.findFirst({
-    where: {
-      age: {
-        gte: 18,
-      },
-    },
-  });
+  console.log(user);
 
-  const user = await prisma.user.findMany({
-    where: {
-      age: {
-        gte: 18,
-      },
-    },
-  });
 }
 
 main()
