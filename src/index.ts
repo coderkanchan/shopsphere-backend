@@ -12,6 +12,7 @@ async function main() {
       },
     },
   });
+  
   console.log(posts);
 
 }
