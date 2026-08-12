@@ -15,7 +15,16 @@ async function main() {
 
   console.log(posts);
 
-  const result = await prisma.user.count();
+  const results = await prisma.user.count();
+
+  const result = await prisma.user.count({
+    where: {
+      age: {
+        gte: 18,
+      },
+    },
+  });
+
 }
 
 main()
