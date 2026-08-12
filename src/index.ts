@@ -3,18 +3,16 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const user = await prisma.user.findMany({
+  const posts = await prisma.post.findMany({
     where: {
-      posts: {
-        none: {
-          title: {
-            contains: "Prisma",
-          },
+      user: {
+        age: {
+          gt: 25,
         },
       },
     },
   });
-  console.log(user);
+  console.log(posts);
 
 }
 
