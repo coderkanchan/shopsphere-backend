@@ -3,11 +3,15 @@ import prisma from "./config/prisma";
 
 async function main() {
 
+  const page = 3;
+  const limit = 10;
+
   const user = await prisma.user.findMany({
     orderBy: {
-      age: "asc",
+      createdAt: "desc",
     },
-    take: 3,
+    skip: (page - 1) * limit,
+    take: limit,
   });
 
   console.log(user);
