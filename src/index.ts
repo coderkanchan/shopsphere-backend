@@ -7,11 +7,17 @@ async function main() {
   const limit = 10;
 
   const user = await prisma.user.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-    skip: (page - 1) * limit,
-    take: limit,
+    where: {
+      AND: [
+        { age: { gte: 18 } },
+        {
+          OR: [
+            { name: { contains: "a" } },
+            { name: { contains: "e" } }
+          ]
+        }
+      ]
+    }
   });
 
   console.log(user);
