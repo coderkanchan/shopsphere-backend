@@ -3,13 +3,11 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const user = await prisma.user.findUnique({
-    where: {
-      id: 1,
+  const user = await prisma.user.findMany({
+    orderBy: {
+      age: "asc",
     },
-    include: {
-      posts: true,
-    },
+    take: 3,
   });
 
   console.log(user);
