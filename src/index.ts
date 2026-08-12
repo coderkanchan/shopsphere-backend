@@ -12,9 +12,10 @@ async function main() {
       },
     },
   });
-  
+
   console.log(posts);
 
+  const result = await prisma.user.count();
 }
 
 main()
