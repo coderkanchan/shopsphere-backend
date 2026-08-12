@@ -3,9 +3,10 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const result = await prisma.user.aggregate({
-    _max: {
-      age: true,
+  const result = await prisma.user.groupBy({
+    by: ["age"],
+    _count: {
+      _all: true,
     },
   });
 
