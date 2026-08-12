@@ -4,7 +4,7 @@ import prisma from "./config/prisma";
 async function main() {
 
   const result = await prisma.user.aggregate({
-    _avg: {
+    _sum: {
       age: true,
     },
   });
