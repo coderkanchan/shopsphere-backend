@@ -3,9 +3,6 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const page = 3;
-  const limit = 10;
-
   const user = await prisma.user.findMany({
     where: {
       posts: {
