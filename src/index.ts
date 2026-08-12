@@ -5,15 +5,10 @@ async function main() {
 
   const user = await prisma.user.findUnique({
     where: {
-      id: 2,
+      id: 1,
     },
-    select: {
-      name: true,
-      posts: {
-        select: {
-          title: true,
-        },
-      },
+    include: {
+      posts: true,
     },
   });
 
