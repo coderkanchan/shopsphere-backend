@@ -8,18 +8,15 @@ async function main() {
 
   const user = await prisma.user.findMany({
     where: {
-      AND: [
-        { age: { gte: 18 } },
-        {
-          OR: [
-            { name: { contains: "a" } },
-            { name: { contains: "e" } }
-          ]
-        }
-      ]
-    }
+      posts: {
+        none: {
+          title: {
+            contains: "Prisma",
+          },
+        },
+      },
+    },
   });
-
   console.log(user);
 
 }
