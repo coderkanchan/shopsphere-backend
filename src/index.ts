@@ -3,28 +3,19 @@ import prisma from "./config/prisma";
 
 async function main() {
 
-  const result = await prisma.$transaction(async (tx) => {
-    const user = await tx.user.findUnique({
-      where: {
-        id: 1,
-      },
-    });
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    const updatedUser = await tx.user.update({
-      where: {
-        id: 1,
-      },
+  try {
+    const user = await prisma.user.create({
       data: {
-        age: 25,
+        name: "Ananya",
+        email: "ananya@gmail.com",
+        age: 24,
       },
     });
 
-    return updatedUser;
-  });
+    console.log(user);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 main()
