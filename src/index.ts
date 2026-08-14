@@ -2,19 +2,18 @@ import "dotenv/config";
 import prisma from "./config/prisma";
 
 async function main() {
-
   try {
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
-        name: "Ananya",
+        name: "Another User",
         email: "ananya@gmail.com",
-        age: 24,
+        age: 25,
       },
     });
-
-    console.log(user);
   } catch (error) {
-    console.error(error);
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      console.log(error.code);
+    }
   }
 }
 
