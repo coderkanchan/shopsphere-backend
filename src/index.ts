@@ -16,6 +16,7 @@ async function main() {
       console.log(error.code);
     }
   }
+  
 }
 
 main()
