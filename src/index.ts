@@ -23,11 +23,10 @@ async function main() {
     },
   });
 
-  const users = await prisma.user.findMany({
-    where: {
-      age: {
-        not: null,
-      },
+  const result = await prisma.product.groupBy({
+    by: ["category"],
+    _count: {
+      _all: true,
     },
   });
 
