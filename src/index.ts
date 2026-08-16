@@ -26,15 +26,8 @@ async function main() {
   const users = await prisma.user.findMany({
     where: {
       name: {
-        startsWith: "A",
-      },
-    },
-  });
-
-  const users = await prisma.user.findMany({
-    where: {
-      name: {
-        contains: "an",
+        startsWith: "kan",
+        mode: "insensitive",
       },
     },
   });
