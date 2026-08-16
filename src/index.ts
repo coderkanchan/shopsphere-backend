@@ -23,15 +23,14 @@ async function main() {
     },
   });
 
-  const result = await prisma.product.groupBy({
-    by: ["category"],
-    _count: {
-      _all: true,
-    },
-    having: {
-      category: {
-        // supported grouping/filter conditions depend on the Prisma query
+  const users = await prisma.user.findMany({
+    where: {
+      posts: {
+        some: {},
       },
+    },
+    include: {
+      posts: true,
     },
   });
 
