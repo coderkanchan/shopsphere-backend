@@ -28,6 +28,11 @@ async function main() {
     _count: {
       _all: true,
     },
+    having: {
+      category: {
+        // supported grouping/filter conditions depend on the Prisma query
+      },
+    },
   });
 
 }
