@@ -25,9 +25,8 @@ async function main() {
 
   const users = await prisma.user.findMany({
     where: {
-      name: {
-        startsWith: "kan",
-        mode: "insensitive",
+      age: {
+        in: [18, 21, 25],
       },
     },
   });
