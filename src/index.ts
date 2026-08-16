@@ -23,14 +23,9 @@ async function main() {
     },
   });
 
-  const users = await prisma.user.findMany({
-    where: {
-      posts: {
-        some: {},
-      },
-    },
+  const posts = await prisma.post.findMany({
     include: {
-      posts: true,
+      user: true,
     },
   });
 
