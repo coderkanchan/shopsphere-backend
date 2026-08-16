@@ -22,7 +22,6 @@ async function main() {
       age: true,
     },
   });
-  
 }
 
 main()
