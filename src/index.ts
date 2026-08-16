@@ -22,6 +22,14 @@ async function main() {
       age: true,
     },
   });
+
+  const users = await prisma.user.findMany({
+    where: {
+      name: {
+        startsWith: "A",
+      },
+    },
+  });
 }
 
 main()
