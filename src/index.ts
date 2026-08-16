@@ -23,11 +23,11 @@ async function main() {
     },
   });
 
-  const posts = await prisma.post.findMany({
-    include: {
-      user: true,
-    },
-  });
+  const result = await prisma.$queryRaw`
+  SELECT *
+  FROM "Color"
+  CROSS JOIN "Size";
+`;
 }
 
 main()
