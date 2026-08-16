@@ -28,7 +28,6 @@ async function main() {
       user: true,
     },
   });
-
 }
 
 main()
