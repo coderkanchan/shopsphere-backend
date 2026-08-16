@@ -26,7 +26,8 @@ async function main() {
   const users = await prisma.user.findMany({
     where: {
       age: {
-        notIn: [18, 21, 25],
+        gte: 18,
+        lte: 30,
       },
     },
   });
