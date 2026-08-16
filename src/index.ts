@@ -16,13 +16,13 @@ async function main() {
       console.log(error.code);
     }
   }
-  const users = await prisma.user.findMany({
-    orderBy: {
-      createdAt: "desc",
+  const ages = await prisma.user.findMany({
+    distinct: ["age"],
+    select: {
+      age: true,
     },
-    take: 10,
-    skip: 0,
   });
+  
 }
 
 main()
