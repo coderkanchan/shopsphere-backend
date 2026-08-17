@@ -28,6 +28,13 @@ async function main() {
   FROM "Color"
   CROSS JOIN "Size";
 `;
+
+  const employees = await prisma.employee.findMany({
+    include: {
+      manager: true,
+      employees: true,
+    },
+  });
 }
 
 main()
