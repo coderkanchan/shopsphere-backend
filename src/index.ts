@@ -32,9 +32,9 @@ async function main() {
   const employees = await prisma.employee.findMany({
     include: {
       manager: true,
-      employees: true,
     },
   });
+  
 }
 
 main()
