@@ -3,7 +3,11 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
- 
+  const result = await prisma.user.aggregate({
+    _avg: {
+      age: true,
+    },
+  });
 
 }
 
