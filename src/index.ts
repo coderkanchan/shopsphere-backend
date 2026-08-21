@@ -10,8 +10,8 @@ async function main() {
   });
   const users = await prisma.user.findMany({
     where: {
-      posts: {
-        none: {},
+      id: {
+        notIn: [1, 2, 3],
       },
     },
   });
