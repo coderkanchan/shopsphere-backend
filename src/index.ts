@@ -8,24 +8,10 @@ async function main() {
       age: true,
     },
   });
-
   const users = await prisma.user.findMany({
     where: {
       posts: {
-        some: {},
-      },
-    },
-  });
-
-  const users = await prisma.user.findMany({
-    where: {
-      posts: {
-        some: {
-          title: {
-            contains: "Prisma",
-            mode: "insensitive",
-          },
-        },
+        none: {},
       },
     },
   });
