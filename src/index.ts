@@ -9,7 +9,13 @@ async function main() {
     },
   });
 
-  
+  const users = await prisma.user.findMany({
+    where: {
+      posts: {
+        some: {},
+      },
+    },
+  });
 }
 
 main()
