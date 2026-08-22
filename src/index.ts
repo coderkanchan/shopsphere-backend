@@ -3,18 +3,15 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const result = await prisma.user.aggregate({
-    _avg: {
-      age: true,
-    },
-  });
-  const users = await prisma.user.findMany({
-    where: {
-      id: {
-        notIn: [1, 2, 3],
-      },
-    },
-  });
+  const result = await prisma.$queryRaw`
+  WITH adults AS (
+    SELECT *
+    FROM "User"
+    WHERE age >= 18
+  )
+  SELECT *
+  FROM adults;
+`;
 }
 
 main()
