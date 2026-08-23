@@ -3,14 +3,12 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const result = await prisma.$queryRaw`
-  WITH adults AS (
-    SELECT *
-    FROM "User"
-    WHERE age >= 18
-  )
-  SELECT *
-  FROM adults;
+  const users = await prisma.$queryRaw`
+  SELECT
+    name,
+    age,
+    ROW_NUMBER() OVER(ORDER BY age DESC) AS row_num
+  FROM "User";
 `;
 }
 
