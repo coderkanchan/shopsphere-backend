@@ -3,11 +3,11 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const users = await prisma.$queryRaw`
+  const result = await prisma.$queryRaw`
   SELECT
     name,
-    age,
-    ROW_NUMBER() OVER(ORDER BY age DESC) AS row_num
+    score,
+    RANK() OVER(ORDER BY score DESC) AS rank
   FROM "User";
 `;
 }
