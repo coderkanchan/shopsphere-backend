@@ -5,14 +5,12 @@ import { Prisma } from "./generated/prisma/client";
 async function main() {
   const result = await prisma.$queryRaw`
   SELECT
-    product,
-    month,
-    sales,
-    LAG(sales) OVER(
-      PARTITION BY product
-      ORDER BY month
-    ) AS previous_sales
-  FROM sales;
+    name,
+    score,
+    FIRST_VALUE(score) OVER(
+      ORDER BY score DESC
+    ) AS highest_score
+  FROM "User";
 `;
 }
 
