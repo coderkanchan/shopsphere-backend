@@ -3,17 +3,14 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const result = await prisma.$queryRaw`
-  SELECT
-    month,
-    sales,
-    SUM(sales) OVER(
-      ORDER BY month
-      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-    ) AS running_total
-  FROM sales;
-`;
-
+  const users = await prisma.user.findMany({
+    where: {
+      createdAt: {
+        gte: new Date("2026-08-01"),
+      },
+    },
+  });
+}
   main()
     .catch(console.error)
     .finally(async () => {
