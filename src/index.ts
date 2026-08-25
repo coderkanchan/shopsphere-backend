@@ -12,6 +12,18 @@ async function main() {
     ) AS highest_score
   FROM "User";
 `;
+
+  const result = await prisma.$queryRaw`
+  SELECT
+    name,
+    score,
+    LAST_VALUE(score) OVER(
+      ORDER BY score DESC
+      ROWS BETWEEN UNBOUNDED PRECEDING
+           AND UNBOUNDED FOLLOWING
+    ) AS lowest_score
+  FROM "User";
+`;
 }
 
 main()
