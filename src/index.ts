@@ -5,14 +5,14 @@ import { Prisma } from "./generated/prisma/client";
 async function main() {
   const result = await prisma.$queryRaw`
   SELECT
-    name,
-    department,
-    score,
-    ROW_NUMBER() OVER(
-      PARTITION BY department
-      ORDER BY score DESC
-    ) AS row_num
-  FROM "User";
+    product,
+    month,
+    sales,
+    LAG(sales) OVER(
+      PARTITION BY product
+      ORDER BY month
+    ) AS previous_sales
+  FROM sales;
 `;
 }
 
