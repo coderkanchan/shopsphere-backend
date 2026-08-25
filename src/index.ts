@@ -4,8 +4,6 @@ import { Prisma } from "./generated/prisma/client";
 
 async function main() {
   const startDate = new Date("2026-08-01");
-  const endDate = new Date("2026-09-01");
-
   const users = await prisma.user.findMany({
     where: {
       createdAt: {
