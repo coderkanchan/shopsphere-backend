@@ -6,8 +6,12 @@ async function main() {
   const result = await prisma.$queryRaw`
   SELECT
     name,
+    department,
     score,
-    RANK() OVER(ORDER BY score DESC) AS rank
+    ROW_NUMBER() OVER(
+      PARTITION BY department
+      ORDER BY score DESC
+    ) AS row_num
   FROM "User";
 `;
 }
