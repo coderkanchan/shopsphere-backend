@@ -3,17 +3,17 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
- const users = await prisma.user.findMany({
-  where: {
-    posts: {
-      some: {
-        title: {
-          contains: "Prisma",
+  const users = await prisma.user.findMany({
+    where: {
+      posts: {
+        some: {
+          title: {
+            contains: "Prisma",
+          },
         },
       },
     },
-  },
-});
+  });
 }
 
 main()
