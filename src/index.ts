@@ -6,7 +6,7 @@ async function main() {
   const users = await prisma.user.findMany({
     where: {
       name: {
-        contains: "kan",
+        startsWith: "Kan",
         mode: "insensitive",
       },
     },
