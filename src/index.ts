@@ -3,13 +3,15 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const users = await prisma.user.findMany({
-    where: {
-      posts: {
-        some: {},
-      },
-    },
-  });
+  const result = await prisma.$queryRaw`
+  SELECT *
+  FROM "User"
+  WHERE EXISTS (
+  SELECT 1
+  FROM "Post" p
+  WHERE p."userId" = u.id
+)
+`;
 }
 
 main()
