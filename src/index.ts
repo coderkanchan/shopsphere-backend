@@ -4,17 +4,16 @@ import { Prisma } from "./generated/prisma/client";
 
 async function main() {
   const result = await prisma.$queryRaw`
+  WITH adult_users AS (
+    SELECT *
+    FROM "User"
+    WHERE age >= 18
+  )
   SELECT *
-  FROM "User"
- WITH average_age AS (
-  SELECT AVG(age) AS avg_age
-  FROM "User"
-)
-SELECT u.*
-FROM "User" u
-CROSS JOIN average_age a
-WHERE u.age > a.avg_age;
+  FROM adult_users;
 `;
+
+
 }
 
 main()
