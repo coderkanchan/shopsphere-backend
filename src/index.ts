@@ -12,8 +12,6 @@ async function main() {
   SELECT *
   FROM adult_users;
 `;
-
-
 }
 
 main()
