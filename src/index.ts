@@ -4,16 +4,19 @@ import { Prisma } from "./generated/prisma/client";
 
 async function main() {
   const result = await prisma.$queryRaw`
-  WITH adult_users AS (
-    SELECT *
-    FROM "User"
-    WHERE age >= 18
+  WITH ranked_posts AS (
+    SELECT
+      p.*,
+      ROW_NUMBER() OVER (
+        PARTITION BY "userId"
+        ORDER BY "createdAt" DESC
+      ) AS row_num
+    FROM "Post" p
   )
   SELECT *
-  FROM adult_users;
+  FROM ranked_posts
+  WHERE row_num = 1;
 `;
-
-
 }
 
 main()
