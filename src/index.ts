@@ -3,15 +3,7 @@ import prisma from "./config/prisma";
 import { Prisma } from "./generated/prisma/client";
 
 async function main() {
-  const result = await prisma.$queryRaw`
-  SELECT
-    name,
-    spending,
-    FIRST_VALUE(spending) OVER (
-      ORDER BY spending DESC
-    ) AS highest_spending
-  FROM "User";
-`;
+ 
 }
 
 main()
