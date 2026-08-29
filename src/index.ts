@@ -5,12 +5,12 @@ import { Prisma } from "./generated/prisma/client";
 async function main() {
   const result = await prisma.$queryRaw`
   SELECT
-    name,
-    spending,
-    RANK() OVER (
-      ORDER BY spending DESC
-    ) AS rank
-  FROM "User";
+    id,
+    amount,
+    LAG(amount) OVER (
+      ORDER BY "createdAt"
+    ) AS previous_amount
+  FROM "Order";
 `;
 }
 
