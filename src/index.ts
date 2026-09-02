@@ -4,6 +4,8 @@ import { Prisma } from "./generated/prisma/client";
 
 async function main() {
  
+
+  
 }
 
 main()
