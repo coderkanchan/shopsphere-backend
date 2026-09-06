@@ -11,6 +11,7 @@ const result = await prisma.$queryRaw`
     ) AS highest_spending
   FROM "User";
 `;
+
 }
 
 main()
