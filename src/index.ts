@@ -10,14 +10,18 @@ async function main() {
       },
     });
 
-    const item = await tx.orderItem.create({
+    const item = await prisma.user.create({
       data: {
-        orderId: order.id,
-        productId: 10,
-        quantity: 2,
-      },
+        name: "Kanchan",
+        email: "kanchan@example.com",
+        posts: {
+          create: [
+            { title: "First Post" },
+            { title: "Second Post" }
+          ]
+        }
+      }
     });
-
     await tx.product.update({
       where: {
         id: 10,
