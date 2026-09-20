@@ -29,53 +29,53 @@ model User {
   role      UserRole @default(CUSTOMER)
   createdAt DateTime @default(now())
 
-  orders    Order[]
+  orders Order[]
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
+  id   Int    @id @default(autoincrement())
+  name String @unique
 
   products Product[]
 }
 
 model Product {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   description String?
   price       Decimal
   stock       Int
   categoryId  Int
-  createdAt   DateTime  @default(now())
+  createdAt   DateTime @default(now())
 
-  category    Category   @relation(fields: [categoryId], references: [id])
-  orderItems  OrderItem[]
+  category   Category    @relation(fields: [categoryId], references: [id])
+  orderItems OrderItem[]
 
   @@index([categoryId])
 }
 
 model Order {
-  id           Int          @id @default(autoincrement())
-  userId       Int
-  totalAmount  Decimal
-  status       OrderStatus  @default(PENDING)
-  createdAt    DateTime     @default(now())
+  id          Int         @id @default(autoincrement())
+  userId      Int
+  totalAmount Decimal
+  status      OrderStatus @default(PENDING)
+  createdAt   DateTime    @default(now())
 
-  user         User         @relation(fields: [userId], references: [id])
-  items        OrderItem[]
+  user  User        @relation(fields: [userId], references: [id])
+  items OrderItem[]
 
   @@index([userId])
 }
 
 model OrderItem {
-  id        Int      @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   orderId   Int
   productId Int
   quantity  Int
   price     Decimal
 
-  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product   Product  @relation(fields: [productId], references: [id])
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
 
   @@index([orderId])
   @@index([productId])
